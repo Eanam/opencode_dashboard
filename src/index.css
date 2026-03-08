@@ -1,13 +1,93 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  background-color: #0f0f23;
+  color: #eeffff;
+  image-rendering: pixelated;
+}
+
+code, pre, .font-mono {
+  font-family: 'VT323', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a6a;
+  border: 2px solid #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6a6a8a;
+}
+
+@layer components {
+  .btn-pixel {
+    @apply px-4 py-2 font-pixel text-sm border-3 border-black shadow-pixel hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all;
+  }
+  
+  .btn-primary {
+    @apply bg-retro-accent text-white border-black shadow-pixel hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all;
+  }
+  
+  .btn-secondary {
+    @apply bg-retro-accent3 text-black border-black shadow-pixel hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all;
+  }
+  
+  .btn-success {
+    @apply bg-retro-accent4 text-black border-black shadow-pixel hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all;
+  }
+  
+  .input-pixel {
+    @apply bg-retro-surface border-3 border-retro-border px-4 py-3 text-retro-text focus:outline-none focus:border-retro-accent2;
+  }
+  
+  .card-pixel {
+    @apply bg-retro-surface border-3 border-retro-border p-4 shadow-pixel;
+  }
+  
+  .panel-pixel {
+    @apply bg-retro-bg border-3 border-retro-border;
+  }
+  
+  .title-pixel {
+    @apply font-pixel text-xs uppercase tracking-wider;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor; }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
 }
